@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:food/utils/app_color/app_colors.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
+import 'package:food/widgets/app_column.dart';
 import 'package:food/widgets/custom_icon/icon_and_text_widget.dart';
 import 'package:food/widgets/custom_texts/big_text.dart';
 import 'package:food/widgets/custom_texts/icon_text_widget.dart';
@@ -77,7 +78,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
              Container(
               margin: EdgeInsets.only(bottom: 3),
               child: BigText(
-            title: ".",color: Colors.red,
+            title: ".",color: Colors.black26,
             ),
              ),
             SizedBox(width: Dimensions.width10,),
@@ -123,7 +124,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         topRight: Radius.circular(Dimensions.radius20),
                         bottomRight: Radius.circular(Dimensions.radius20),
                         ),
-                      color: Colors.red
+                      color: Colors.white
                     ),
                     
                     child: Padding(
@@ -242,47 +243,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BigText(title: "Chinese Side",),
-                    SizedBox(height: Dimensions.height10,),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(5, (index) => Icon(Icons.star,
-                          color:AppColor.mainColor,
-                          size: 15,
-                          ),
-                          ),
-                        ),
-                        SizedBox(width: Dimensions.width10,),
-                        SmallText(title: "4.5"),
-                        SizedBox(width: Dimensions.width10,),
-                        SmallText(title: "1287"),
-                        SizedBox(width: Dimensions.width10,),
-                        SmallText(title: "comments"),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconTextWidget(
-                          icon: Icons.circle_sharp,
-                          title: "Normal", 
-                          iconColor: AppColor.iconColor1,
-                          
-                        ),
-                        IconTextWidget(
-                          icon: Icons.location_on, 
-                          title: "1.8km", 
-                          iconColor: AppColor.mainColor
-                        ),
-                        IconTextWidget(
-                          icon: Icons.access_alarm, 
-                          title: "32min", 
-                          iconColor: AppColor.iconColor2
-                        ),
-                      ],
-                    ),
+                    AppColumn(
+                    title: "Chinese Side"
+                    )
                   ],
                 ),
               ),

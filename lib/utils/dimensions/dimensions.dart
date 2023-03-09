@@ -46,8 +46,8 @@ static double listViewImgSize = screenWidth/3.43;
 static double listViewTextContainerSize = screenWidth/4.11;
 
 
-//details screen
-static double detailsImageSize = screenWidth/1.95;
+//popular food
+static double popularFoodImageSize = screenWidth/1.95;
 
 
 //bottom height
