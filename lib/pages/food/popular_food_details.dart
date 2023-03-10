@@ -7,6 +7,7 @@ import 'package:food/widgets/app_column.dart';
 
 import '../../utils/app_color/app_colors.dart';
 import '../../widgets/custom_texts/big_text.dart';
+import '../../widgets/custom_texts/expandable_text.dart';
 import '../../widgets/custom_texts/icon_text_widget.dart';
 import '../../widgets/custom_texts/small_text.dart';
 
@@ -19,6 +20,7 @@ class PopularFoodDetails extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          //backgroundImage Section
           Positioned(
             left: 0,
             right: 0,
@@ -33,6 +35,7 @@ class PopularFoodDetails extends StatelessWidget {
             ),
           ),
           ),
+          //icon Section
           Positioned(
             top:Dimensions.height45,
             left: Dimensions.width20,
@@ -49,6 +52,7 @@ class PopularFoodDetails extends StatelessWidget {
             ],
           )
           ),
+          //introduction of food
           Positioned(
             left: 0,
             right: 0,
@@ -77,10 +81,19 @@ class PopularFoodDetails extends StatelessWidget {
                     BigText(
                     title: "Introduce"
                     ),
+                    SizedBox(height: Dimensions.height20,),
+                     Expanded(
+                       child: SingleChildScrollView(
+                         child: ExpandableText(
+                          title: "food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion."
+                          ),
+                       ),
+                     )
                   ],
                 ),
           ),
           ),
+        
         ],
       ),
       bottomNavigationBar: Container(
