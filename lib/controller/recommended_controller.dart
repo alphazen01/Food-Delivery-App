@@ -1,5 +1,5 @@
 
-import 'package:food/models/product_model.dart';
+import 'package:food/models/popular_products_model.dart.dart';
 import 'package:get/get.dart';
 
 import '../data/repository/recommended_repo.dart';
@@ -20,7 +20,7 @@ Future<void>getRecommendedProductList()async{
  Response response= await recommendedRepo.getRecommendedProductList();
  if (response.statusCode==200) {
    _recommendedList=[];
-   _recommendedList.addAll(Product.fromJson(response.body).products);
+   //_recommendedList.addAll(Product.fromJson(response.body).products);
    print(_recommendedList);
    update(); 
  } else {

@@ -1,15 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:food/controller/popular_product_controller.dart.dart';
 import 'package:food/utils/app_color/app_colors.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
 import 'package:food/widgets/app_column.dart';
-import 'package:food/widgets/custom_icon/icon_and_text_widget.dart';
 import 'package:food/widgets/custom_texts/big_text.dart';
 import 'package:food/widgets/custom_texts/icon_text_widget.dart';
 import 'package:food/widgets/custom_texts/small_text.dart';
+import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
  
@@ -43,27 +41,37 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: Dimensions.pageView,
-          child:PageView.builder(
-            controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context,position){
-            return _buildPageItem(position);
-          }
-          )
+        //sliderSection
+        GetBuilder<PopularProductController>(
+          builder: (popularProducts) {
+           return Container(
+            height: Dimensions.pageView,
+            child:PageView.builder(
+              controller: pageController,
+            itemCount: popularProducts.popularProductList.length,
+            itemBuilder: (context,position){
+              return _buildPageItem(position);
+            }
+            )
+          ); 
+          },
+          
         ),
         //dotsIndicator
-        new DotsIndicator(
-        dotsCount: 5,
-        position: _currPageValue,
-        decorator: DotsDecorator(
-          activeColor: AppColor.mainColor,
-          size: const Size.square(9.0),
-          activeSize: const Size(18.0, 9.0),
-          activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        GetBuilder<PopularProductController>(
+          builder: (popularProducts) {
+            return  DotsIndicator(
+          dotsCount: popularProducts.popularProductList.isEmpty?1:popularProducts.popularProductList.length,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            activeColor: AppColor.mainColor,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          ),
+              );
+          },
         ),
-      ),
        //popularText
        SizedBox(height: Dimensions.height30,),
        Container(
@@ -156,7 +164,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         iconColor: AppColor.mainColor
                       ),
                       IconTextWidget(
-                        icon: Icons.access_alarm, 
+                        icon: Icons.access_time_rounded, 
                         title: "32min", 
                         iconColor: AppColor.iconColor2
                       ),

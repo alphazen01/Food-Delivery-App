@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:food/utils/app_icon/app_icon.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
 import 'package:food/widgets/app_column.dart';
@@ -8,8 +6,7 @@ import 'package:food/widgets/app_column.dart';
 import '../../utils/app_color/app_colors.dart';
 import '../../widgets/custom_texts/big_text.dart';
 import '../../widgets/custom_texts/expandable_text.dart';
-import '../../widgets/custom_texts/icon_text_widget.dart';
-import '../../widgets/custom_texts/small_text.dart';
+
 
 class PopularFoodDetails extends StatelessWidget {
   const PopularFoodDetails({Key? key}) : super(key: key);

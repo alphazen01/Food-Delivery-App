@@ -1,10 +1,11 @@
 
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
-import 'package:food/widgets/custom_texts/small_text.dart';
 
+
+// ignore: must_be_immutable
 class IconTextWidget extends StatelessWidget {
   final IconData icon;
   final String title;
