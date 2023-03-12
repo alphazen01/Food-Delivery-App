@@ -5,7 +5,7 @@ import 'package:food/utils/constants/app_constants.dart';
 import 'package:get/get.dart';
 
 import '../controller/recommended_controller.dart';
-import '../data/repository/recommended_repo.dart';
+import '../data/repository/recommended_product_repo.dart.dart';
 
 Future<void>init()async{
 
@@ -14,9 +14,9 @@ Future<void>init()async{
 
 //repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
-  Get.lazyPut(() => RecommendedRepo(apiClient: Get.find()));
+  Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
 
   //controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
-  Get.lazyPut(() => RecommendedController(recommendedRepo: Get.find()));
+  Get.lazyPut(() => RecommendedProductController(recommendedProductRepo: Get.find()));
 }

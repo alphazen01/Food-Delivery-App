@@ -2,10 +2,10 @@ import 'package:food/data/api/api_client.dart';
 import 'package:food/utils/constants/app_constants.dart';
 import 'package:get/get.dart';
 
-class RecommendedRepo extends GetxService{
+class RecommendedProductRepo extends GetxService{
 
 final ApiClient apiClient;
-RecommendedRepo({required this.apiClient});
+RecommendedProductRepo({required this.apiClient});
 
 Future<Response>getRecommendedProductList()async{
 
