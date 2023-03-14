@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food/controller/popular_product_controller.dart.dart';
 import 'package:food/pages/home/main_food_page.dart';
 import 'package:food/utils/app_icon/app_icon.dart';
+import 'package:food/utils/constants/app_constants.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
 import 'package:food/widgets/app_column.dart';
 import 'package:get/get.dart';
@@ -11,10 +13,14 @@ import '../../widgets/custom_texts/expandable_text.dart';
 
 
 class PopularFoodDetails extends StatelessWidget {
-  const PopularFoodDetails({Key? key}) : super(key: key);
+  int pageId;
+   PopularFoodDetails({Key? key,required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
+    print("page is id"+pageId.toString());
+    print("product name is "+product.name.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -29,7 +35,9 @@ class PopularFoodDetails extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-              image: AssetImage("assets/images/testy_burger.jpg")
+              image: NetworkImage(
+                AppConstants.BASE_URL+AppConstants.UPLOAD_URl+product.img!
+              )
               )
             ),
           ),
@@ -79,7 +87,7 @@ class PopularFoodDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppColumn(
-                    title: "Chinese Side"
+                    title: product.name!
                     ),
                     SizedBox(height: Dimensions.height20,),
                     BigText(
@@ -89,7 +97,7 @@ class PopularFoodDetails extends StatelessWidget {
                      Expanded(
                        child: SingleChildScrollView(
                          child: ExpandableText(
-                          title: "food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion."
+                          title: product.description!
                           ),
                        ),
                      )
@@ -153,7 +161,7 @@ class PopularFoodDetails extends StatelessWidget {
       child: Row(
         children: [
           BigText(
-          title: "\$10 | Add to cart",
+          title: "\$ ${product.price!} | Add to cart",
           color: Colors.white,
           ),
         ],
