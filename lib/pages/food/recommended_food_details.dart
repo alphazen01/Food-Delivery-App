@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:food/controller/recommended_controller.dart';
 import 'package:food/routes/route_helper.dart';
 import 'package:food/utils/app_color/app_colors.dart';
 import 'package:food/utils/app_icon/app_icon.dart';
+import 'package:food/utils/constants/app_constants.dart';
 import 'package:food/utils/dimensions/dimensions.dart';
 import 'package:food/widgets/custom_texts/big_text.dart';
 import 'package:food/widgets/custom_texts/expandable_text.dart';
 import 'package:get/get.dart';
 
 class RecommendedFoodDetails extends StatelessWidget {
-  const RecommendedFoodDetails({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetails({Key? key,required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -39,7 +43,7 @@ class RecommendedFoodDetails extends StatelessWidget {
             child: Container(
               child:Center(
               child: BigText(
-              title: "Chinese Side",
+              title: product.name!,
               fontSize: Dimensions.font26,
               )
               ),
@@ -60,8 +64,8 @@ class RecommendedFoodDetails extends StatelessWidget {
             backgroundColor:AppColor.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/images/testy_burger.jpg",
+              background: Image.network(
+                AppConstants.BASE_URL+AppConstants.UPLOAD_URl+product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -73,7 +77,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                   child: ExpandableText(
-                  title: "food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion.food, substance consisting essentially of protein, carbohydrate, fat, and other nutrients used in the body of an organism to sustain growth and vital processes and to furnish energy. The absorption and utilization of food by the body is fundamental to nutrition and is facilitated by digestion."
+                  title: product.description!
                   ),
                 ),
               ],
@@ -101,7 +105,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                 iconSize: Dimensions.iconSize24,
                 ),
                 BigText(
-                title: "\$12.88 "+" X "+" 0 ",
+                title: "\$ ${product.price}  X  0 ",
                 color: AppColor.mainBlackColor,
                 fontSize: Dimensions.font26,
                 ),
