@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       //  home: SplashScreen(),
       initialRoute: RouteHelper.getSplashScreen(),
       getPages: RouteHelper.routes,
-      home:SignInPage()
+      // home:SignInPage()
      
 
     );

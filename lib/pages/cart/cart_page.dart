@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../base/no_data_page.dart';
+import '../../controller/auth_controller.dart';
 import '../../controller/cart_controller.dart';
 import '../../controller/popular_product_controller.dart.dart';
 import '../../controller/recommended_controller.dart';
@@ -284,13 +285,13 @@ class _CartPageState extends State<CartPage>
             GestureDetector(
               onTap: (){
                 
-              //  if (Get.find<AuthController>().userLoggedIn()) {
+               if (Get.find<AuthController>().userLoggedIn()) {
                 
-              //    cartController.addToHistory();
-              //  } else {
-              //    Get.toNamed(RouteHelper.getSignInPage());
-              //  }
-              cartController.addToHistory();
+                 cartController.addToHistory();
+               } else {
+                 Get.toNamed(RouteHelper.getSignInPage());
+               }
+              // cartController.addToHistory();
                 
               },
               child: BigText(
