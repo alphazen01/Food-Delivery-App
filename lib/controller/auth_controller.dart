@@ -1,6 +1,8 @@
 
 
+import 'package:food_app/models/login_model.dart';
 import 'package:food_app/models/respons_model.dart';
+import 'package:food_app/pages/cart/cart_page.dart';
 import 'package:get/get.dart';
 
 import '../data/repository/auth_repo.dart';
@@ -34,21 +36,19 @@ Future<ResponseModel>  registration(SignUpBody signUpBody)async{
  return responseModel;
 }
 
-
-Future<ResponseModel>  login(String email,String password)async{
-print("Getting token");
-print( authRepo.getUserToken().toString());
-
+Future<ResponseModel>  login(LoginModel loginModel)async{
   _isLoading = true;
   update();
- Response response = await authRepo.login(email,password);
+ Response response = await authRepo.login(loginModel);
+ print("yyyyyy");
+print(response.statusCode);
+print(response.body);
+ 
  late ResponseModel responseModel;
- if (response.statusCode == 200) {
-  print("object");
-
+ if (response.statusCode==200) {
   print("Backend token");
    authRepo.saveUserToken(response.body["token"]);
-   print(response.body["token"].toString());
+    print(response.body["token"].toString());
    responseModel = ResponseModel(true, response.body["token"]);
  } else {
     responseModel = ResponseModel(false, response.statusText!);
@@ -57,6 +57,9 @@ print( authRepo.getUserToken().toString());
  update();
  return responseModel;
 }
+
+
+
 
 
 
@@ -71,6 +74,8 @@ bool userLoggedIn(){
   return  authRepo.userLoggedIn();
 }
 
-
+bool clearShareData(){
+  return authRepo.clearShareData();
+}
 
 }

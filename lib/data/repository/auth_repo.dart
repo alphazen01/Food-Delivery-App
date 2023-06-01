@@ -1,5 +1,6 @@
 
 import 'package:food_app/data/api/api_client.dart';
+import 'package:food_app/models/login_model.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +18,7 @@ AuthRepo({
 });
 
 Future<Response> registration(SignUpBody signUpBody)async{
-  return await apiClient.postData(AppConstants.REGISTRATION_URI, signUpBody);
+  return await apiClient.postData(AppConstants.REGISTRATION_URI, signUpBody.toJson());
 }
 
 bool userLoggedIn(){
@@ -28,8 +29,8 @@ Future<String> getUserToken()async{
   return await sharedPreferences.getString(AppConstants.TOKEN)??"None";
 }
 
-Future<Response> login(String email, String password)async{
-  return await apiClient.postData(AppConstants.LOGIN_URI,{"email":email,"password":password});
+Future<Response> login(LoginModel loginModel)async{
+  return await apiClient.postData(AppConstants.LOGIN_URI,loginModel.toJson());
 }
 
 Future<bool>  saveUserToken(String token)async{
@@ -47,5 +48,13 @@ Future<void> saveUserNumberAndPassword(String number, String password)async{
   }
 }
 
+bool clearShareData(){
+  sharedPreferences.remove(AppConstants.TOKEN);
+  sharedPreferences.remove(AppConstants.PASSWORD);
+  sharedPreferences.remove(AppConstants.PHONE);
+  apiClient.token ="";
+  apiClient.updateHeader("");
+  return true;
+}
 
 }

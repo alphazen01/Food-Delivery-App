@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/controller/auth_controller.dart';
+import 'package:food_app/controller/cart_controller.dart';
+import 'package:food_app/routes/route_helper.dart';
+import 'package:get/get.dart';
 
 import '../utils/app_color/app_colors.dart';
 import '../utils/app_icon/app_icon.dart';
@@ -111,6 +115,31 @@ class AccountPage extends StatelessWidget {
               )
               ),
               SizedBox(height: Dimensions.height20,),
+            
+              //logout
+              GestureDetector(
+                onTap: (){
+                  if (Get.find<AuthController>().userLoggedIn()) {
+                    Get.find<AuthController>().clearShareData();
+                    Get.find<CartController>().clear();
+                    Get.find<CartController>().clearCartHistory();
+                    Get.offNamed(RouteHelper.getSignInPage());
+                  } 
+                  
+                },
+                child: AccountWidget(
+                appIcon: AppIcon(
+                icon: Icons.logout,
+                backgroundColor: Colors.redAccent,
+                iconColor: Colors.white,
+                iconSize: Dimensions.height10*5/2,
+                size: Dimensions.height10*5,
+                ), 
+                bigText: BigText(
+                title: "LogOut"
+                )
+                ),
+              ),
                   ],
                 ),
               ),

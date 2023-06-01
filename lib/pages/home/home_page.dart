@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:food_app/account/account_page.dart';
 import 'package:food_app/pages/auth/sign_in.dart';
 import 'package:food_app/pages/auth/sign_up.dart';
-import 'package:food_app/pages/cart/cart_history.dart';
-import 'package:food_app/pages/cart/cart_page.dart';
 import 'package:food_app/pages/home/main_food_page.dart';
 
 import '../../utils/app_color/app_colors.dart';

@@ -33,6 +33,7 @@ class SignUpPage extends StatelessWidget {
    
     ];
      void _registration(AuthController authController){
+      var authController = Get.find<AuthController>();
       String name = nameController.text.trim();
       String phone = phonelController.text.trim();
       String email = emailController.text.trim();
@@ -71,6 +72,7 @@ class SignUpPage extends StatelessWidget {
           Get.toNamed(RouteHelper.getCartPage());
          } else {
            showCustomSanckBar(status.message);
+           print("object");
          }
 
          });
