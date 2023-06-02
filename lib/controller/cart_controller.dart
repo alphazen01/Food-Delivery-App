@@ -152,4 +152,10 @@ void addToCartList (){
   update();
 }
 
+void clearCartHistory(){
+  cartRepo.clearCartHistory();
+  update();
+}
+
+
 }

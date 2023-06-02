@@ -1,6 +1,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/models/login_model.dart';
 import 'package:food_app/pages/auth/sign_up.dart';
 
 import 'package:get/get.dart';
@@ -21,10 +22,13 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
-     void _login(AuthController authController){
+    var phoneController = TextEditingController();
+    void _login(AuthController authController){
+
 
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
+      String phone= phoneController.text.trim();
 
 
       if(email.isEmpty){
@@ -39,21 +43,28 @@ class SignInPage extends StatelessWidget {
       }
       else{
         
+         LoginModel loginModel =LoginModel(
+
+          email: email, 
+          password: password,
+          phone: phone
+ 
+          );
         
-        
-         authController.login(email, password).then((status){
+
+         authController.login(loginModel).then((status){
          if (status.isSuccess) {
           showCustomSanckBar("All went well",title: "Perfect");
-          print("Success Login");
+          print("Success login");
           Get.toNamed(RouteHelper.getCartPage());
          } else {
            showCustomSanckBar(status.message);
+           print("object");
          }
 
          });
       }
     }
-
 
 
 
@@ -121,6 +132,13 @@ class SignInPage extends StatelessWidget {
                 hintText: "Password", 
                 icon: Icons.password_sharp
                 ),
+                SizedBox(height: Dimensions.height20,),
+                AppTextField(
+                obscureText: false,
+              textEditingController: phoneController, 
+              hintText: "Phone", 
+              icon: Icons.phone
+              ),
                 SizedBox(height: Dimensions.height20,),
                  Row(
                   mainAxisAlignment: MainAxisAlignment.end,
