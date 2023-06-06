@@ -22,6 +22,7 @@ class AccountPage extends StatelessWidget {
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
       print("User has logged In");
+      
     }
     return Scaffold(
       appBar: AppBar(
@@ -158,7 +159,19 @@ class AccountPage extends StatelessWidget {
             ],
           ),
         ):CustomLoader()):Container(
-          child: Center(child: Text("You must login")),
+          child: Center(
+          child: Container(
+            width: double.maxFinite,
+            height: Dimensions.height20*5,
+            margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
+            child: Center(
+            child: BigText(
+            title: "You must login",
+            fontSize: 20,
+            )
+              ),
+          )
+          ),
         );
         },
          

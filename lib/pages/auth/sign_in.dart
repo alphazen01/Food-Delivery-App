@@ -56,7 +56,7 @@ class SignInPage extends StatelessWidget {
          if (status.isSuccess) {
           showCustomSanckBar("All went well",title: "Perfect");
           print("Success login");
-          Get.toNamed(RouteHelper.getCartPage());
+          Get.toNamed(RouteHelper.getInitial());
          } else {
            showCustomSanckBar(status.message);
            print("object");

@@ -20,7 +20,7 @@ factory UserModel.fromjson(Map<String,dynamic>json){
   name:json["f_name"], 
   email:json["email"], 
   phone: json["phone"], 
-  orderCount: json["order_count"]
+  orderCount: json["order_count"],
   );
 }
 

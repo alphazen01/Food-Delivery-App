@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/controller/cart_controller.dart';
-import 'package:food_app/pages/auth/sign_in.dart';
-import 'package:food_app/pages/auth/sign_up.dart';
-import 'package:food_app/pages/home/home_page.dart';
 import 'package:food_app/routes/route_helper.dart';
 
 import 'package:get/get.dart';

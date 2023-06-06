@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/pages/auth/sign_in.dart';
 
 
 import 'package:get/get.dart';
@@ -69,7 +70,7 @@ class SignUpPage extends StatelessWidget {
          if (status.isSuccess) {
           showCustomSanckBar("All went well",title: "Perfect");
           print("Success registration");
-          Get.toNamed(RouteHelper.getCartPage());
+          Get.to(SignInPage());
          } else {
            showCustomSanckBar(status.message);
            print("object");

@@ -3,7 +3,7 @@ import 'package:food_app/utils/constants/app_constants.dart';
 import 'package:get/get.dart';
 
 class UserRepo{
-  late final ApiClient apiClient;
+  final ApiClient apiClient;
   UserRepo({
     required this.apiClient
   });

@@ -1,13 +1,10 @@
 import 'package:food_app/data/repository/user_repo.dart';
 import 'package:food_app/models/user_model.dart';
 import 'package:get/get.dart';
-
-import '../data/repository/auth_repo.dart';
 import '../models/respons_model.dart';
 
 class UserController extends GetxController implements GetxService{
-
-late final UserRepo userRepo;
+ final UserRepo userRepo;
 
 UserController({
   required this.userRepo
