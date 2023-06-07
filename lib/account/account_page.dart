@@ -6,6 +6,7 @@ import 'package:food_app/controller/user_controller.dart';
 import 'package:food_app/routes/route_helper.dart';
 import 'package:get/get.dart';
 
+import '../pages/auth/sign_in.dart';
 import '../utils/app_color/app_colors.dart';
 import '../utils/app_icon/app_icon.dart';
 import '../utils/dimensions/dimensions.dart';
@@ -33,7 +34,8 @@ class AccountPage extends StatelessWidget {
         fontSize: 24,
         )
       ),
-      body:GetBuilder<UserController>(
+      body:
+      GetBuilder<UserController>(
         builder: (usrController) {
           return _userLoggedIn?(usrController.isLoading? Container(
           width: double.maxFinite,
@@ -158,21 +160,46 @@ class AccountPage extends StatelessWidget {
               
             ],
           ),
-        ):CustomLoader()):Container(
-          child: Center(
-          child: Container(
+        ):CustomLoader()):
+        Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
             width: double.maxFinite,
-            height: Dimensions.height20*5,
-            margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
-            child: Center(
-            child: BigText(
-            title: "You must login",
-            fontSize: 20,
-            )
-              ),
-          )
+            
+            height: Dimensions.height20*10,
+            decoration: BoxDecoration(
+                  image: DecorationImage(
+                  image: AssetImage("assets/images/bicycle.jpg"),
+                  fit: BoxFit.cover
+                  ),
+                  
+                ),
+               
           ),
-        );
+          GestureDetector(
+            onTap: (){
+              Get.toNamed(RouteHelper.getSignInPage());
+            },
+            child: Container(
+              width: double.maxFinite,
+              height: Dimensions.height20*5,
+              margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
+              decoration: BoxDecoration(
+                color: AppColor.mainColor,
+                borderRadius: BorderRadius.circular(Dimensions.radius20)
+              ),
+              child: Center(
+              child: BigText(
+              title: "Sign In First",
+              fontSize: 24,
+              color: Colors.white,
+              )
+                ),
+            ),
+          )
+        ],
+      );
         },
          
       ),
